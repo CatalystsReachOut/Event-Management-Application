@@ -1,0 +1,24 @@
+{
+  "name": "eventify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CatalystsReachOut/Event-Management-Application.git"
+  },
+  "keywords": [
+    "reactjs",
+    "nodejs",
+    "scss"
+  ],
+  "author": "priyansh, vaibhav, smita, sitanshu, prasad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CatalystsReachOut/Event-Management-Application/issues"
+  },
+  "homepage": "https://github.com/CatalystsReachOut/Event-Management-Application#readme"
+}
