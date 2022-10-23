@@ -1,0 +1,7 @@
+@media (max-width: 450px)
+{
+    .login__container{
+        margin: 2rem;
+        width: 95%;
+    }
+}
