@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState} from 'react'
 import TextNIcon from '../../components/TextNIcon/TextNIcon'
 import personIcon from "../../assets/icons/human_placeholder.png"
 import email_icon from "../../assets/icons/email.png"
@@ -20,31 +20,70 @@ const styles = {
 
 
 function SignUp() {
+
+    const [signUpForm , setSignUpForm] = useState({
+        firstname : "",
+        lastname : "",
+        email : "",
+        password : "",
+    })
+
+    const handleSubmit = (event =>{
+        event.preventDefault()
+        console.log(signUpForm)
+    })
+
+    const handleChange = (event) =>{
+        const {name , value} = event.target 
+
+        setSignUpForm(prevState =>{
+            return{
+                ...prevState,
+                [name] : value
+            }
+        })
+    } 
     return (
         <div className={styles.body}>
             <div className={styles.container}>
                 <div className={styles.title_div}>
                     <h1 className={styles.title_h1}>Sign Up</h1>
                 </div>
-                <form action="" className={styles.form}>
+                <form onSubmit={handleSubmit} className={styles.form}>
                     <TextNIcon
                         type="text"
                         icon={personIcon}
-                        placeholder="Firstname" />
+                        placeholder="Firstname" 
+                        name = "firstname"
+                        value = {signUpForm.firstname}
+                        changehandler = {handleChange}
+                    />
                     <TextNIcon
                         type="text"
                         icon={personIcon}
-                        placeholder="Lastname" />
+                        placeholder="Lastname" 
+                        name = "lastname"
+                        value = {signUpForm.lastname}
+                        changehandler = {handleChange}
+                    />
                     <TextNIcon
                         type="email"
                         icon={email_icon}
-                        placeholder="Email address" />
+                        placeholder="Email address" 
+                        name = "email"
+                        value = {signUpForm.email}
+                        changehandler = {handleChange}
+                    />
                     <TextNIcon
                         type="password"
                         icon={pass_icon}
-                        placeholder="Password" />
+                        placeholder="Password" 
+                        name = "password"
+                        value = {signUpForm.password}
+                        changehandler = {handleChange}
+                    />
 
-                    <button type="submit" className={styles.signUp_button}>Sign Up</button>
+                    <button className={styles.signUp_button}>Sign Up</button>
                 </form>
                 <div className={styles.login_container}>
                     <p className={styles.login_text}> Already have an account?</p>
