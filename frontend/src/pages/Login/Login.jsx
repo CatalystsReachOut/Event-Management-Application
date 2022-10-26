@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./Login.css"
 import email_icon from "../../assets/icons/email.png"
 import pass_icon from "../../assets/icons/password.png"
@@ -24,26 +24,63 @@ const styles = {
 }
 
 function Login() {
+
+    const [loginForm, setLoginForm] = useState({
+        email : "",
+        password : "",
+        rememberMe : false
+    })
+    
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(loginForm)
+    }
+
+    const handleChange = (event) =>{
+        const {name, value , type , checked} = event.target
+
+        setLoginForm(prevState =>{
+            
+            return{
+                ...prevState,
+                [name] : type==="checkbox" ? checked : value
+            }
+        })
+    }
     return (
         <div className={styles.body}>
             <div className={styles.login__container}>
                 <div className={styles.login__title}>
                     <h1 className={styles.login__title_h1}>Log In</h1>
                 </div>
-                <form action="" className={styles.login__form}>
+                <form onSubmit={handleSubmit} className={styles.login__form}>
 
                     <TextNIcon
                         icon={email_icon}
                         type="email"
-                        placeholder="Email address" />
+                        placeholder="Email address" 
+                        name = "email"
+                        value = {loginForm.email}
+                        changehandler = {handleChange}
+                    />
                     <TextNIcon
                         icon={pass_icon}
                         type="password"
-                        placeholder="Password" />
+                        placeholder="Password"
+                        name = "password"
+                        value = {loginForm.password}
+                        changehandler = {handleChange}
+                    />
 
                     <div className={styles.RemFor_container}>
                         <div className={styles.checkbox__container}>
-                            <input type="checkbox" id='rememberMe' className={styles.checkbox__box} />
+                            <input type="checkbox" 
+                                    id='rememberMe' className={styles.checkbox__box} 
+                                    name = "rememberMe"
+                                    onChange={handleChange}
+                                    checked = {loginForm.rememberMe}
+
+                            />
                             <label htmlFor="rememberMe" className={styles.checkbox__label}>Remember Me</label>
                         </div>
                         <div className={styles.forgotPass__conatiner}>

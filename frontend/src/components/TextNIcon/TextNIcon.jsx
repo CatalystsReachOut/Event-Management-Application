@@ -13,7 +13,14 @@ function TextNIcon(props) {
             <label htmlFor="inp_id" className={styles.label}>
                 <img src={props.icon} alt="icon" className={styles.icon} />
             </label>
-            <input type={props.type} className={styles.inp_filed} id="inp_id" placeholder={props.placeholder} />
+            <input type={props.type} 
+                   className={styles.inp_filed} 
+                   id="inp_id" 
+                   placeholder={props.placeholder} 
+                   name = {props.name} 
+                   value = {props.value} 
+                   onChange = {props.changehandler}
+            />
         </div>
     )
 }
