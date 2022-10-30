@@ -6,7 +6,12 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 
 const userSchema=new mongoose.Schema({
-    username:{
+    firstname:{
+        type:String,
+        required:true,
+        maxlength:[40,'Name should be under 40 characters.']
+    },
+    lastname:{
         type:String,
         required:true,
         maxlength:[40,'Name should be under 40 characters.']

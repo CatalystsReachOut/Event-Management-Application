@@ -3,8 +3,10 @@ import TextNIcon from '../../components/TextNIcon/TextNIcon'
 import personIcon from "../../assets/icons/human_placeholder.png"
 import email_icon from "../../assets/icons/email.png"
 import pass_icon from "../../assets/icons/password.png"
+import { useNavigate } from "react-router-dom";
 import './SignUp.css'
 import { ROUTES } from '../../routes/RouterConfig'
+import axios from 'axios'
 
 const styles = {
     body: "signUp_body flex items-center justify-center h-screen bg-hero bg-no-repeat bg-cover bg-right-top bg-fixed font-openSans",
@@ -20,6 +22,8 @@ const styles = {
 
 
 function SignUp() {
+    
+    const navigate=useNavigate();
 
     const [signUpForm , setSignUpForm] = useState({
         firstname : "",
@@ -28,10 +32,23 @@ function SignUp() {
         password : "",
     })
 
-    const handleSubmit = (event =>{
+    const handleSubmit = async (event) =>{
         event.preventDefault()
         console.log(signUpForm)
-    })
+
+       await axios.post('http://localhost:8080/api/signup',{
+        firstname:signUpForm.firstname,
+        lastname:signUpForm.lastname,
+        email:signUpForm.email,
+        password:signUpForm.password
+        }).then( res => {
+        console.log(res);
+        console.log(res.data);
+                navigate("/");
+        }).catch(err =>{
+            alert(err);
+        });
+    }
 
     const handleChange = (event) =>{
         const {name , value} = event.target 
