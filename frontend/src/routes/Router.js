@@ -3,7 +3,9 @@ import { Route, Routes } from 'react-router-dom'
 import About from '../pages/About/About';
 import Home from '../pages/Home/Home';
 import { ROUTES } from './RouterConfig';
-import Test from '../pages/Test/Test';
+
+import Login from "../pages/Login/Login"
+import SignUp from '../pages/SignUp/SignUp';
 
 const Router = () => {
 
@@ -20,7 +22,9 @@ const Router = () => {
         <Routes>
             <Route exact path={ROUTES.Home} element={<RouteWithRole Element={Home} />}></Route>
             <Route exact path={ROUTES.About} element={<RouteWithRole Element={About} />}></Route>
-            <Route exact path="/Test" element={<RouteWithRole Element={Test} />}></Route>
+
+            <Route exact path={ROUTES.Login} element={<RouteWithRole Element={Login} />}></Route>
+            <Route exact path={ROUTES.SignUp} element={<RouteWithRole Element={SignUp} />}></Route>
         </Routes>
     </div>
   )

@@ -1,0 +1,14 @@
+@media (max-width: 420px)
+{
+
+    .login__container{
+        width: 100% !important;
+       
+    }
+    .checkbox__label{
+        white-space: nowrap;
+    }
+    .forgotPass__link{
+        white-space: nowrap;
+    }
+}

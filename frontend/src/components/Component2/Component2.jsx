@@ -1,16 +1,12 @@
-import React from "react";
 
-const Component2 = () => {
+import React from 'react'
 
-    return(
-
-      <div>
-      <h1>Hello from Component 1</h1>
-      </div>
-
-
-
-    );
-
+function Component2() {
+  return (
+    <div>
+        <p>Hello form Component2</p>
+    </div>
+  )
 }
-export default Component2 ;
+
+export default Component2
