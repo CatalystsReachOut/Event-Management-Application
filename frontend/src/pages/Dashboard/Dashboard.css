@@ -1,0 +1,16 @@
+.x{
+    width: 100%;
+}
+.y{
+    font-family: 'Mochiy Pop One', sans-serif;
+    font-size: 1.8rem;
+}
+@media screen and (max-width:600px) {
+    .x{
+    display: block;
+    }
+    .z{
+        display:grid;
+        width: 40% ;
+    }
+}

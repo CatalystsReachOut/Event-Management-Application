@@ -1,0 +1,16 @@
+@media screen and (max-width: 992px) {
+    .s{
+      width:90%;
+      display: contents;
+      align-items: center;
+      justify-content: center;
+    }
+    .a{
+        font-size:large;
+     padding-bottom: 5%;
+    }
+    .c{
+        font-size: xx-large;
+        margin-bottom: 1%;
+    }
+}
