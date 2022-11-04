@@ -42,12 +42,13 @@ const upcoming_eventSchema = new mongoose.Schema({
 
                        },
 
-       speakers:{
+       speakers:[{
                                     type: String,
                                     required: true,
                                     maxlength: [20 , 'Speaker name should be under 20 characters.']
 
-                       },
+                       }
+                      ],
 
        Prize:
                        {
@@ -69,7 +70,7 @@ const upcoming_eventSchema = new mongoose.Schema({
                        required: true,
                        maxlength: [15 , 'Status should should not be more then 15 character.']
                      },
- )}
+                    })
 
  const Upcoming_Event = mongoose.model("Upcoming_Event", upcoming_eventSchema);
  export default Upcoming_Event;

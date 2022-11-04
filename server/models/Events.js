@@ -42,12 +42,12 @@ const eventSchema = new mongoose.Schema({
 
       },
 
-      speakers:{
+      speakers:[{
                    type: String,
                    required: true,
                    maxlength: [20 , 'Speaker name should be under 20 characters.']
 
-      },
+      }],
 
       Prize:
       {

@@ -4,7 +4,8 @@ import email_icon from "../../assets/icons/email.png"
 import pass_icon from "../../assets/icons/password.png"
 import TextNIcon from '../../components/TextNIcon/TextNIcon'
 import { ROUTES } from '../../routes/RouterConfig'
-
+import axios from "axios"
+import { useNavigate } from "react-router-dom";
 const styles = {
     body: "login__body flex items-center justify-center h-screen bg-hero bg-no-repeat bg-cover bg-right-top bg-fixed font-openSans",
     login__container: "login__container flex flex-col items-center justify-around py-[60px] border-0 border-black px-[30px] bg-white rounded-[8px] shadow-login_shadow m-2 w-[35%] max-w-[420px]",
@@ -24,6 +25,7 @@ const styles = {
 }
 
 function Login() {
+    const navigate=useNavigate();
 
     const [loginForm, setLoginForm] = useState({
         email : "",
@@ -31,9 +33,20 @@ function Login() {
         rememberMe : false
     })
     
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
         console.log(loginForm)
+
+        await axios.post('http://localhost:8080/api/login', {
+      email:loginForm.email,
+      password:loginForm.password
+    }).then(res =>{
+      console.log(res);
+      console.log(res.data);
+        navigate("/");
+    }).catch(err=>{
+     alert(err);
+    })
     }
 
     const handleChange = (event) =>{
@@ -46,7 +59,9 @@ function Login() {
                 [name] : type==="checkbox" ? checked : value
             }
         })
-    }
+    };
+
+
     return (
         <div className={styles.body}>
             <div className={styles.login__container}>
