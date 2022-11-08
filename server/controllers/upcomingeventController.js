@@ -13,8 +13,8 @@ export const createUpcomingEvent = bigPromise(async(req,res,next)=>{
 
          success:false,
          message: "Fill the required fields!"
-     }
-
+     })
+}
      const existingUpcomingEvent = await Event.findOne({eventName: eventName})
 
      if(existingUpcomingEvent){
