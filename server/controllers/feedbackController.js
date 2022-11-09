@@ -4,16 +4,15 @@ import bigPromise from "../middlewares/bigPromise.js"
 
 export const createFeedback = bigPromise(async(req,res,next) =>
 {
-   const {email} = res.post;
+   const {email} = req.body;
 
    if((!email))
    {
      return res.status(400).json({
-
       success: false,
       message: "Fill the email"
+   })
    }
-
     const existingFeedback = await Feedback.findOne({email:email})
 
     if(existingFeedback){
@@ -27,8 +26,7 @@ export const createFeedback = bigPromise(async(req,res,next) =>
 }else {
 
      const feedback = await Feedback.create({
-
-          email,
+          email
    })
 
    return res.status(201).json({
@@ -37,7 +35,6 @@ export const createFeedback = bigPromise(async(req,res,next) =>
         message: "Feedback given Successfully!",
         data: feedback
 
+})
 }
-)}
-
 })

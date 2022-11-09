@@ -4,8 +4,9 @@ import {card} from "../../components/Card/Card"
 import Card from "../../components/Card/Card"
 import { Select, Option } from "@material-tailwind/react";
 import  "./Dashboard.css"
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { Menu } from '@headlessui/react'
+import axios from "axios"
 const Dashboard= () => {
   const abc=[
     {
@@ -30,6 +31,24 @@ const Dashboard= () => {
     setYear(item);
     console.log(item);
   }
+
+  const [eventData,setEventData] = useState([]);
+  
+  const shreyas = async () =>{
+    
+    await axios.get('http://localhost:8080/api/event').then(res =>{
+      console.log(res);
+      console.log(res.data);
+      setEventData(res.data.data);
+    }).catch(err=>{
+     alert(err);
+    })
+  }
+
+  useEffect(() => {
+    shreyas()
+  },[]);
+
    return (
     <div className=' w-100 font-openSans'>
     <div className='grid lg:grid-cols-3 sm:grid-cols-3 grid-cols-1 x shadow-2xl items-center'>
@@ -72,11 +91,10 @@ const Dashboard= () => {
     </Menu.Items>
   </Menu>
     </div>
-
 </div>
 
     <div className='container py-[60px] m-auto grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5'>
-    {card.map((i,key) => (
+    {eventData.map((i,key) => (
       <Card data={i}/>
      ) 
      )}
