@@ -7,6 +7,7 @@ import Dashboard from '../pages/Dashboard/Dashboard';
 import Login from "../pages/Login/Login"
 import SignUp from '../pages/SignUp/SignUp';
 import forgotPassword from '../pages/Forgotpassword/forgotPassword';
+import AddEvent from '../pages/AddEvent/AddEvent';
 const Router = () => {
 
     const RouteWithRole = ({ Element }) => {
@@ -26,6 +27,7 @@ const Router = () => {
             <Route exact path={ROUTES.SignUp} element={<RouteWithRole Element={SignUp} />}></Route>
             <Route exact path={ROUTES.Dashboard} element={<RouteWithRole Element={Dashboard} />}></Route>
             <Route exact path={ROUTES.Forgotpassword} element={<RouteWithRole Element={forgotPassword} />}></Route>
+            <Route exact path={ROUTES.AddEvent} element={<RouteWithRole Element={AddEvent} />}></Route>
         </Routes>
     </div>
   )
